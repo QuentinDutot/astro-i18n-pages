@@ -1,0 +1,50 @@
+{
+  "name": "astro-i18n-pages",
+  "version": "1.0.0",
+  "private": false,
+  "description": "An astro integration to sync i18n pages.",
+  "homepage": "https://github.com/QuentinDutot/astro-i18n-pages#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/QuentinDutot/astro-i18n-pages"
+  },
+  "keywords": [
+    "astro",
+    "astro-integration",
+    "astro-i18n",
+    "astro-i18next",
+    "astro-i18n-pages"
+  ],
+  "type": "module",
+  "exports": {
+    "./plugin": {
+      "import": "./src/plugin.ts",
+      "types": "./src/plugin.ts"
+    },
+    "./instance": {
+      "import": "./src/instance.ts",
+      "types": "./src/instance.ts"
+    },
+    "./components": {
+      "import": "./src/components/index.ts",
+      "types": "./src/components/index.ts"
+    },
+    "./utils": {
+      "import": "./src/utils/externals.ts",
+      "types": "./src/utils/externals.ts"
+    }
+  },
+  "dependencies": {
+    "@formatjs/intl-localematcher": "^0.4.2",
+    "negotiator": "^0.6.3",
+    "openai": "^4.11.1",
+    "zod": "^3.22.2"
+  },
+  "devDependencies": {
+    "@types/negotiator": "^0.6.1",
+    "@types/node": "^20.7.1"
+  },
+  "peerDependencies": {
+    "astro": "^3.0.0"
+  }
+}

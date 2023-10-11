@@ -1,0 +1,25 @@
+---
+import { getLocaleDataFromUrl } from "../utils/externals";
+
+interface Props {
+  url: URL;
+}
+
+const { url } = Astro.props;
+if (!url) throw new Error("Missing url prop");
+
+const locale = getLocaleDataFromUrl(url);
+if (!locale) throw new Error("Missing locale data");
+---
+
+<astro-i18n-pages style="display:none;">
+  {JSON.stringify(locale)}
+</astro-i18n-pages>
+
+<script>
+  // @ts-expect-error - import resolved when the component is used (to load same instance)
+  import i18n from "astro-i18n-pages/instance";
+  const [i18nElement] = document.getElementsByTagName("astro-i18n-pages");
+  i18n.locale = JSON.parse(i18nElement.innerHTML);
+  i18nElement.remove();
+</script>
