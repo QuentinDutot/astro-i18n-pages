@@ -9,14 +9,10 @@ export const getLocalesCodes = () =>
     file.replace(".json", "")
   );
 
-export const matchLocale = (input: string) => {
+export const matchLocale = (input: string, locales: string[]) => {
   const headers: negotiator.Headers = { "accept-language": input };
   const languages = new negotiator({ headers }).languages();
-  const matchedLocale = match(
-    languages,
-    getLocalesCodes(),
-    getLocalesCodes()[0]
-  );
+  const matchedLocale = match(languages, locales, locales[0]);
   return matchedLocale;
 };
 
